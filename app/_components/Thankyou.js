@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Thankyou() {
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100 ">
@@ -6,12 +8,12 @@ export default function Thankyou() {
         <p className="text-gray-600 mb-6">
           Your Job has been posted successfully.
         </p>
-        <a
+        <Link
           href="/jobs"
           className="inline-block px-6 py-3  bg-amber-700 text-white rounded-xl hover:bg-amber-800 transition-colors duration-200  font-medium  "
         >
           Go Home
-        </a>
+        </Link>
       </div>
     </div>
   );

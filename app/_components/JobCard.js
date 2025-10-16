@@ -15,7 +15,7 @@ export default async function JobCard() {
     return (
         <>
             {!jobs || jobs.length === 0 ? (
-                <p>Sorry something went wrong! Jobs couldN't be loaded</p>
+                <p>Sorry something went wrong! Jobs couldn&apos;t be loaded</p>
             ) : (
 
                 <ul className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">

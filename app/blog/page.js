@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function BlogPage() {
   return (
     <div className="bg-gray-50 py-12">
@@ -41,7 +43,7 @@ export default function BlogPage() {
                 href="#"
                 className="group relative block h-48 w-full overflow-hidden"
               >
-                <img
+                <Image
                   src={post.img}
                   alt={post.title}
                   loading="lazy"

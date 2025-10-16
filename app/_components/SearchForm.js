@@ -10,21 +10,22 @@ export default function SearchForm({ jobs }) {
   const [locationTerms, setLocationTerms] = useState("");
   const [filteredJobs, setFilteredJobs] = useState(jobs);
 
-  // Debounced filter function
-  const debouncedFilter = useCallback(
-    debounce((search, location) => {
-      const filtered = jobs.filter((job) => {
-        const matchesSearch = search
-          ? job.title.toLowerCase().includes(search.toLowerCase()) ||
-            job.company.toLowerCase().includes(search.toLowerCase())
-          : true;
-        const matchesLocation = location
-          ? job.location.toLowerCase().includes(location.toLowerCase())
-          : true;
-        return matchesSearch && matchesLocation;
-      });
-      setFilteredJobs(filtered);
-    }, 800),
+  // Memoize the debounced filter function
+  const debouncedFilter = useMemo(
+    () =>
+      debounce((search, location) => {
+        const filtered = jobs.filter((job) => {
+          const matchesSearch = search
+            ? job.title.toLowerCase().includes(search.toLowerCase()) ||
+              job.company.toLowerCase().includes(search.toLowerCase())
+            : true;
+          const matchesLocation = location
+            ? job.location.toLowerCase().includes(location.toLowerCase())
+            : true;
+          return matchesSearch && matchesLocation;
+        });
+        setFilteredJobs(filtered);
+      }, 800),
     [jobs]
   );
 
